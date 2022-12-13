@@ -230,7 +230,6 @@ public class ServiceVanished extends DBManager{
         }
     }
 
-    public void deleteVanished(int id){
-        executeUpdate("DELETE FROM vanished WHERE id = " + id + "");
+    public void deleteVanished(int id){getVanishedByQuery("DELETE FROM vanished WHERE id = " + id + "");
     }
 }

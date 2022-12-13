@@ -147,8 +147,7 @@ public class ServiceRegion extends DBManager{
         }
     }
 
-    public void deleteRegion(int id){
-        executeUpdate("DELETE FROM region WHERE id = " + id +"");
+    public void deleteRegion(int id){ getRegionsByQuery("DELETE FROM region WHERE id = " + id +"");
     }
 
 }

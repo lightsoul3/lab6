@@ -162,7 +162,7 @@ public class ServiceLastSeeingPlace extends DBManager {
     }
 
     public void deletePlace(int id){
-        executeUpdate("DELETE FROM last_seeing_place WHERE id = " + id +"");
+        getPlaceByQuery("DELETE FROM last_seeing_place WHERE id = " + id +"");
     }
 
 }
