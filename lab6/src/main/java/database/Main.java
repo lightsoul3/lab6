@@ -6,7 +6,6 @@ import lab1.Region;
 import lab1.Vanished;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -65,29 +64,14 @@ public class Main {
 
 
 
-        Service service = new Service("jdbc:mysql://localhost:3306/information_about_vanished", "root", "xyf377j0");
+        ServiceRegion serviceRegion = new ServiceRegion("jdbc:mysql://localhost:3306/information_about_vanished", "root", "xyf377j0");
 
-//        service.addRegion(region1);
-//        service.addRegion(region2);
-
-//        service.addVanished(vanished1);
-//        service.addVanished(vanished2);
-//        service.addVanished(vanished3);
-//        service.addVanished(vanished4);
-//        service.addVanished(vanished5);
-//
-//        service.addPlace(p1);
-//        service.addPlace(p2);
-//        service.addPlace(p3);
-//        service.addPlace(p4);
-//        service.addPlace(p5);
+//        serviceRegion.addRegion(region1);
+//        serviceRegion.addRegion(region2);
 
 
 
-
-
-
-        List<Region> regions = service.getRegions();
+        List<Region> regions = serviceRegion.getRegions();
 
         System.out.println("SELECT ALL REGIONS");
         System.out.println(regions);
@@ -95,18 +79,29 @@ public class Main {
         System.out.println("\n");
 
         System.out.println("SELECT REGIONS BY NAME - Lviv");
-        System.out.println(service.getRegionByName("Lviv"));
+        System.out.println(serviceRegion.getRegionByName("Lviv"));
 
         System.out.println("\n");
 
         System.out.println("SORT REGIONS BY NAME");
-        System.out.println(service.sortRegionByName());
+        System.out.println(serviceRegion.sortRegionByName());
 
 
+
+
+
+        ServiceVanished serviceVanished = new ServiceVanished("jdbc:mysql://localhost:3306/information_about_vanished", "root", "xyf377j0");
+
+//        serviceVanished.addVanished(vanished1);
+//        serviceVanished.addVanished(vanished2);
+//        serviceVanished.addVanished(vanished3);
+//        serviceVanished.addVanished(vanished4);
+//        serviceVanished.addVanished(vanished5);
+//
 
         System.out.println("\n\n\n");
 
-        List<Vanished> vanisheds = service.getVanisheds();
+        List<Vanished> vanisheds = serviceVanished.getVanisheds();
 
         System.out.println("SELECT ALL VANISHEDS");
         System.out.println(vanisheds);
@@ -114,30 +109,40 @@ public class Main {
         System.out.println("\n");
 
         System.out.println("SELECT VANISHED BY TYPE - Animal");
-        System.out.println(service.getVanishedByType("Animal"));
+        System.out.println(serviceVanished.getVanishedByType("Animal"));
 
         System.out.println("\n");
 
         System.out.println("SELECT VANISHED BY SEX - Female");
-        System.out.println(service.getVanishedBySex("Female"));
+        System.out.println(serviceVanished.getVanishedBySex("Female"));
 
         System.out.println("\n");
 
         System.out.println("SORT VANISHED BY NAME");
-        System.out.println(service.sortVanishedByName());
+        System.out.println(serviceVanished.sortVanishedByName());
 
         System.out.println("\n");
 
         System.out.println("SORT VANISHED BY MISS DATE");
-        System.out.println(service.sortVanishedByMissDate());
+        System.out.println(serviceVanished.sortVanishedByMissDate());
 
         System.out.println("\n");
 
 
 
+
+        ServiceLastSeeingPlace serviceLastSeeingPlace = new ServiceLastSeeingPlace("jdbc:mysql://localhost:3306/information_about_vanished", "root", "xyf377j0");
+
+//        serviceLastSeeingPlace.addPlace(p1);
+//        serviceLastSeeingPlace.addPlace(p2);
+//        serviceLastSeeingPlace.addPlace(p3);
+//        serviceLastSeeingPlace.addPlace(p4);
+//        serviceLastSeeingPlace.addPlace(p5);
+
+
         System.out.println("\n\n\n");
 
-        List<LastSeeingPlace> lastSeeingPlaces = service.getLastSeeingPlaces();
+        List<LastSeeingPlace> lastSeeingPlaces = serviceLastSeeingPlace.getLastSeeingPlaces();
 
         System.out.println("SELECT ALL LAST SEEING PLACES");
         System.out.println(lastSeeingPlaces);
@@ -145,12 +150,18 @@ public class Main {
         System.out.println("\n");
 
         System.out.println("SELECT LAST SEEING PLACES BY REGION - Lviv");
-        System.out.println(service.getPlaceByRegionName("Lviv"));
+        System.out.println(serviceLastSeeingPlace.getPlaceByRegionName("Lviv"));
 
         System.out.println("\n");
 
         System.out.println("SORT LAST SEEING PLACES BY STREET NAME");
-        System.out.println(service.sortPlacesByStreetName());
+        System.out.println(serviceLastSeeingPlace.sortPlacesByStreetName());
 
+        LastSeeingPlace p6 = new LastSeeingPlace.Builder().setPlaceId(5)
+                .setRegionName("Lviv").setStreetName("Ivana Franka").setHouseNumber("98-A").setVanished(vanished5).build();
+
+        System.out.println("UPDATE LAST SEEING PLACE WHERE id = 5");
+        serviceLastSeeingPlace.updateLastSeeingPlace(p6);
+        System.out.println(serviceLastSeeingPlace.getPlaceById(5));
     }
 }
