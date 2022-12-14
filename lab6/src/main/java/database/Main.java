@@ -12,25 +12,25 @@ public class Main {
 
     public static void main(String args[]) {
 
-        Region region1 = new Region.Builder().setRegionId(1).setRegionName("Chernivtsi").setSquare(8097)
+        Region region1 = new Region.Builder().setRegionName("Chernivtsi").setSquare(8097)
                 .setPeopleNumber(9016).setAnimalNumber(1000).build();
         Region region2 = new Region.Builder().setRegionId(2).setRegionName("Lviv").setSquare(10954)
                 .setPeopleNumber(15021).setAnimalNumber(28012).build();
 
-        Vanished vanished1 = new Vanished.Builder().setVanishedId(1)
+        Vanished vanished1 = new Vanished.Builder()
                 .setType(Vanished.Type.ANIMAL).setSex(Vanished.Sex.MALE).setName("Barsik")
                 .setBirthDate(LocalDate.of(2017, 8, 18))
                 .setMissDate(LocalDate.of(2022, 10, 29))
                 .setfinderPhoneNumber("0982602637").setRegion(region1).build();
 
 
-        Vanished vanished2 = new Vanished.Builder().setVanishedId(2)
+        Vanished vanished2 = new Vanished.Builder()
                 .setType(Vanished.Type.HUMAN).setSex(Vanished.Sex.MALE).setName("Roman")
                 .setBirthDate(LocalDate.of(1974, 11, 8))
                 .setMissDate(LocalDate.of(2022, 8, 24))
                 .setfinderPhoneNumber("0682602111").setRegion(region1).build();
 
-        Vanished vanished3 = new Vanished.Builder().setVanishedId(3)
+        Vanished vanished3 = new Vanished.Builder()
                 .setType(Vanished.Type.HUMAN).setSex(Vanished.Sex.FEMALE).setName("Alina")
                 .setBirthDate(LocalDate.of(1999, 9, 28))
                 .setMissDate(LocalDate.of(2022, 2, 24))
@@ -43,22 +43,22 @@ public class Main {
                 .setfinderPhoneNumber("0680026393").setRegion(region2).build();
 
 
-        Vanished vanished5 = new Vanished.Builder().setVanishedId(5)
+        Vanished vanished5 = new Vanished.Builder()
                 .setType(Vanished.Type.ANIMAL).setSex(Vanished.Sex.FEMALE).setName("Lily")
                 .setBirthDate(LocalDate.of(2019, 6, 26))
                 .setMissDate(LocalDate.of(2022, 6, 6))
                 .setfinderPhoneNumber("0992890628").setRegion(region2).build();
 
 
-        LastSeeingPlace p1 = new LastSeeingPlace.Builder().setPlaceId(1)
+        LastSeeingPlace p1 = new LastSeeingPlace.Builder()
                 .setRegionName("Chernivtsi").setStreetName("Ruska").setHouseNumber("22-A").setVanished(vanished1).build();
-        LastSeeingPlace p2 = new LastSeeingPlace.Builder().setPlaceId(2)
+        LastSeeingPlace p2 = new LastSeeingPlace.Builder()
                 .setRegionName("Chernivtsi").setStreetName("Geroiv Maidanu").setHouseNumber("105").setVanished(vanished2).build();
-        LastSeeingPlace p3 = new LastSeeingPlace.Builder().setPlaceId(3)
+        LastSeeingPlace p3 = new LastSeeingPlace.Builder()
                 .setRegionName("Lviv").setStreetName("Golovna").setHouseNumber("11-B").setVanished(vanished3).build();
-        LastSeeingPlace p4 = new LastSeeingPlace.Builder().setPlaceId(4)
+        LastSeeingPlace p4 = new LastSeeingPlace.Builder()
                 .setRegionName("Lviv").setStreetName("Shevchenka").setHouseNumber("98-C").setVanished(vanished4).build();
-        LastSeeingPlace p5 = new LastSeeingPlace.Builder().setPlaceId(5)
+        LastSeeingPlace p5 = new LastSeeingPlace.Builder()
                 .setRegionName("Lviv").setStreetName("Lesi Ukrainky").setHouseNumber("98-A").setVanished(vanished5).build();
 
 
@@ -157,7 +157,7 @@ public class Main {
         System.out.println("SORT LAST SEEING PLACES BY STREET NAME");
         System.out.println(serviceLastSeeingPlace.sortPlacesByStreetName());
 
-        LastSeeingPlace p6 = new LastSeeingPlace.Builder().setPlaceId(5)
+        LastSeeingPlace p6 = new LastSeeingPlace.Builder()
                 .setRegionName("Lviv").setStreetName("Ivana Franka").setHouseNumber("98-A").setVanished(vanished5).build();
 
         System.out.println("UPDATE LAST SEEING PLACE WHERE id = 5");
